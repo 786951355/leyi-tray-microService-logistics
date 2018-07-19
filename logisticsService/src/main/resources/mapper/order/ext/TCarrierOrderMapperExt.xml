@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.leyi.logistics.mapper.CarrierOrderMapper" >
+  <select id="getCarrierOrderBy" resultType="com.leyi.logistics.entity.order.module.CarrierOrderModule">
+    SELECT
+      id as id,
+      carrier_order_code as carrierOrderCode
+    from t_carrier_order where carrier_order_code = #{carrierOrderCode,jdbcType=VARCHAR}
+  </select>
+</mapper>

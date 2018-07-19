@@ -1,0 +1,27 @@
+spring:
+  profiles:
+    active: prod
+  rabbitmq:
+      host: localhost
+      port: 5672
+      username: guest
+      password: guest
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://${prod.eureka1.server.hostname}:${prod.eureka1.server.port}/eureka/,http://${prod.eureka2.server.hostname}:${prod.eureka2.server.port}/eureka/
+
+
+logisticsdatabase:
+  mysql:
+    admin:
+      database: basedata
+      driverClassName: ${prod.database.driverClassName}
+      host: ${prod.database.host}
+      port: ${prod.database.port}
+      username: ${prod.database.username}
+      password: ${prod.database.password}
+      url: jdbc:mysql://${logisticsdatabase.mysql.admin.host}:${logisticsdatabase.mysql.admin.port}/${logisticsdatabase.mysql.admin.database}?autoReconnect=true&allowMultiQueries=true&zeroDateTimeBehavior=convertToNull
+      connectionProperties: config.decrypt=${prod.database.configDecrypt};config.decrypt.key=${prod.database.configDecryptkey}
